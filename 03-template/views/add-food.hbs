@@ -1,0 +1,53 @@
+{{#extends "base"}}
+
+{{#block "title"}}Buy Food{{/block}}
+
+    {{#block "content"}}
+    <form method="POST">
+        <div>
+        <label>Enter the food name</label>
+        <input type="text" class="form-control" name="foodName">
+        </div>
+        <div>
+        <label>Enter the calories</label>
+        <input type="text" class="form-control" name="calories">
+        </div>
+
+        <div>
+           <label>Select meal:</label>
+
+           <input type="radio" class="form-check-input" name="meal" value="breakfast">
+           <label class="form-check-label">Breakfast</label>
+
+            <input type="radio" class="form-check-input" name="meal" value="lunch">
+            <label class="form-check-label">Lunch</label>
+
+            <input type="radio" class="form-check-input" name="meal" value="dinner">
+            <label class="form-check-label">Dinner</label>
+
+            <input type="radio" class="form-check-label" name="meal" value="supper">
+            <label class="from-check-label">Supper</label>
+        </div>
+
+        <div>
+            <label >Select tags</label>
+
+            <input type="checkbox" class="'form-check-input" name="tags" value="home-cooked">
+            <label class="form-check-label">Home Cooked</label>
+
+            <input type="checkbox" class="form-check-input" name="tags" value="oily">
+            <label class="form-check-label">Oily</label>
+
+            <input type="checkbox" class="form-check-input" name="tags" value="vegan">
+            <label class="form-check-label">Vegan</label>
+
+            <input type="checkbox" class="form-check-input" name="tags" value="healthy">
+            <label class="form-check-label">Healthy</label>
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" values="submit">
+    </form>
+
+
+    {{/block}}
+
+{{/extends}}

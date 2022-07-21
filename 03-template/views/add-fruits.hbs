@@ -1,0 +1,21 @@
+{{#extends "base"}}
+
+{{#block "title"}}Buy Fruits{{/block}}
+
+    {{#block "content"}}
+    <form method="POST">
+        <div>
+        <label>Enter the fruit name</label>
+        <input type="text" class="form-control" name="fruitName">
+        </div>
+        <div>
+        <label>Enter the calories</label>
+        <input type="text" class="form-control" name="calories">
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" values="submit">
+    </form>
+
+
+    {{/block}}
+
+{{/extends}}

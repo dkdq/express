@@ -1,0 +1,25 @@
+{{#extends "base"}}
+
+{{#block "title"}}Pricing{{/block}}
+
+{{#block "content"}}
+<form method="POST">
+    <input type="checkbox" class="form-check-input" name="item" value="durian">
+    <label>Durian ($15.00)</label>
+
+    <input type="checkbox" class="form-check-input" name="item" value="apple">
+    <label>Apple ($8.00)</label>
+
+    <input type="checkbox" class="form-check-input" name="item" value="banana">
+    <label>Banana ($2.00)</label>
+
+    <input type="checkbox" class="form-check-input" name="item" value="orange">
+    <label>Orange ($6.00)</label>
+    <div>
+        <input type="submit" class="btn btn-primary mt-3" value="submit">
+    </div>
+</form>
+
+{{/block}}
+
+{{/extends}}
