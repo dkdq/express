@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const waxon = require('wax-on');
+const axios = require('axios');
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.get('/hello/:name',function(req,res){
     });
 })
 
-app.get('/fruits', function(req,res){
+app.get('/fruits',function(req,res){
     let dishes = [
         {
             'name': 'Mango ice-cream',
@@ -106,7 +107,7 @@ const fruitPrices = {
     'orange': 6
 }
 
-app.get('/add-price', function(req,res){
+app.get('/add-price',function(req,res){
     res.render('add-price');
 })
 
@@ -159,7 +160,90 @@ app.post('/add-price',function(req,res){
         'total': total
     })
 })
- 
+
+// CRUD - sighting.hbs
+const BASE_API_URL = 'https://ckx-restful-api.herokuapp.com/';
+
+
+// Read
+app.get('/sighting',async function(req,res){
+    try{
+        let response = await axios.get(BASE_API_URL + 'sightings');
+        res.render('sighting',{
+            'foodSighting': response.data
+        })
+    } catch(e) {
+        console.log(e);
+        res.send("Error!")
+    }
+})
+
+// CREATE
+app.get('/sighting/create',function(req,res){
+    res.render('food-form')
+})
+
+app.post('/sighting/create',async function(req,res){
+    // let data = {
+    //     'description' :req.body.description,
+    //     'food': req.body.food.split(','),
+    //     'date': req.body.datetime
+    // }
+    // await axios.post(BASE_API_URL + 'sightings', data);
+
+    await axios.post(BASE_API_URL + 'sightings', {
+        '_id': req.body._id,
+        'description': req.body.description,
+        'food': req.body.food.split(','),
+        'datetime': req.body.datetime
+    })
+    res.redirect('/sighting')
+})
+
+// UPDATE
+app.get('/sighting/edit/:id',async function(req,res){
+    let ID = req.params.id;
+    let response = await axios.get(BASE_API_URL + 'sighting/' + ID);
+    let foodSighting = response.data;
+    // res.send(response.data);
+    res.render('food-form-edit', {
+        'description': foodSighting.description,
+        'food': foodSighting.food,
+        'datetime': foodSighting.datetime.slice(0,-1)
+    })
+})
+
+app.post('sighting/edit/:id',async function(req,res){
+    let ID = req.params.id;
+    await axios.put(BASE_API_URL + 'sighting/' + ID, {
+        'description': req.body.description,
+        'food': req.body.food.split(','),
+        'datetime': req.body.datetime
+    })
+    res.redirect('/sighting')
+})
+
+// DELETE
+app.get('/sighting/delete/:id',async function(req,res){
+    let ID = req.params.id;
+    let response = await axios.get(BASE_API_URL + 'sighting/' + ID);
+    let foodSighting = response.data;
+    // res.send(foodSighting); 
+    res.render('food-comfirm-delete',{
+        'foodSighting': foodSighting
+    })
+})
+
+app.post('/sighting/delete/:id',async function(req,res){
+    let ID = req.params.id
+    await axios.delete(BASE_API_URL + 'sighting/' + ID, {
+        'description': description,
+        'food': food,
+        'datetime': datetime
+    })
+    res.redirect('/sighting')
+})
+
 app.listen(3000, function(){
     console.log('server started')
 })
