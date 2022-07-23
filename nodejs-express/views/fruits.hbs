@@ -1,0 +1,32 @@
+{{#extends "base"}}
+
+    {{#block "content"}}
+        <h1>Fruits</h1>
+        <ul class="list-group">
+            {{#each fruits}}
+            <li class="list-group-item">{{this}}</li>
+            {{/each}}
+        </ul>
+
+        <h1>Dishes</h1>
+        <ul class="list-group">
+            {{#each dishes}}
+            <li class="list-group-item">
+                <h2>{{this.name}}</h2>
+                <p>calories: {{this.calories}}</p>
+            </li>
+            {{/each}}
+        </ul>
+
+        {{#if drinks}}
+            <h1>Drinks: {{drinks}}</h1>
+        {{/if}}
+
+        {{#ifEquals drinks "milo peng"}}
+            <h1>Your drinks is Milo with ice/h1>
+        {{else}}
+            <h1>Your drinks is not Milo with ice</h1>
+        {{/ifEquals}}
+    {{/block}}
+
+{{/extends}}

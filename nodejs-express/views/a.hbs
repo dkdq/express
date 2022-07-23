@@ -1,0 +1,86 @@
+{{!-- sighting home page --}}
+{{#extends "base"}}
+{{#block "content"}}
+    <h1>Food Sighitng</h1>
+    <a href="/sighting/create" class="btn btn-primary">Add New Sighting</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Food</th>
+                <th>Date Time</th>
+            </tr>
+        </thead>
+        {{#each foodSighting}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.food}}</td>
+            <td>{{this.datetime}}</td>
+            <td>
+                <a href="/sighiting/edit/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="/sighting/delete/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+{{/block}}
+{{/extends}}
+
+{{!-- form food --}}
+{{extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div>
+        <label>Description</label>
+        <input type="text" class="form-contorl-input" name="description" placeholder="Enter desctiption">
+    </div>
+    <div>
+        <label>Food</label>
+        <input type="text" class="form-contorl-input" name="food" placeholder="Enter food">
+    </div>
+    <div>
+        <label>Date TIme</label>
+        <input type="datetime-local" name="datetime" class="formc-contorl-input">
+    </div>
+    <input type="submit" class="btn btn-primary mt-3" value="POST FOOD">
+</form>
+{{/block}}
+{{/extends}}
+
+{{!-- edit-form --}}
+{{extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div>
+        <label>Description</label>
+        <input type="text" value="{{description}}" name="description" class="form-contorl-input" placeholder="Enter desctiption">
+    </div>
+    <div>
+        <label>Food</label>
+        <input type="text" value="{{food}}" name="food" class="form-contorl-input" placeholder="Enter food">
+    </div>
+    <div>
+        <label>Date TIme</label>
+        <input type="datetime-local" value="{{datetime}}" name="datetime" class="formc-contorl-input">
+    </div>
+    <input type="submit" class="btn btn-primary mt-3" value="POST FOOD">
+</form>
+{{/block}}
+{{/extends}}
+
+{{!-- form-delete --}}
+{{#extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div class="alert alert-danger">
+          Are you sure want to {{description}} in {{timedate}}?</p>
+    </div>
+    <input type="submit" class="btn btn-danger mt-3" name="OK">
+    <a href="/sighting" class="btn btn-success">Cancel</a>
+</form>
+
+{{/block}}
+
+{{/extends}}

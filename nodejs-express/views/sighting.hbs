@@ -1,0 +1,33 @@
+{{#extends "base"}}
+
+{{#block "content"}}
+<h1>Food Sighting</h1>
+<a href="/sighting/create" class="btn btn-primary">Add New Sighting</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Food</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    {{#each foodSighting}}
+    <tr>
+        <td>{{this._id}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.food}}</td>
+        <td>{{this.datetime}}</td>
+        <td>
+            <a href="/sighting/edit/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="/sighting/delete/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+    </tr>
+    {{/each}}
+
+</table>
+
+{{/block}}
+
+{{/extends}}
