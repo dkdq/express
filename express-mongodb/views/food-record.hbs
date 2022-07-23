@@ -1,0 +1,30 @@
+{{#extends "base"}}
+{{#block "content"}}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Meal</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each foodRecord}}
+        <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.foodName}}</td>
+            <td>{{this.calories}}</td>
+            <td>{{this.meal}}</td>
+            <td>{{this.tags}}</td>
+            <td>
+                <a href="/sighting/edit/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="/sighting/delete/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/block}}
+{{/extends}}
