@@ -5,13 +5,15 @@ const dotenv = require('dotenv').config(); // must show before MONGO_URI
 const { connect } = require('./MongoUtil');
 
 const app = express();
-app.set('view engine', 'hbs');
-waxon.on(hbs.handlebars);
-waxon.setLayoutPath('./views/layouts');
 
+app.set('view engine', 'hbs');
+app.use(express.static('public'));
 app.use(express.urlencoded({
     extended: false
 }));
+
+waxon.on(hbs.handlebars);
+waxon.setLayoutPath('./views/layouts');
 
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -21,11 +23,11 @@ async function main(){
         let foodRecord = await db.collection('food_records').find({}).limit(10).toArray();
         // res.send(data);
         res.render('food-record',{
-            'foodRecord': foodRecord 
+            'foodRecord': foodRecord
         })
     })
 
-    // CREATE is easiest here, compared to axios READ
+    // create
     app.get('/add-food',async function(req,res){
         res.render('add-food')
     })
