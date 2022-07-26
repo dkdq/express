@@ -1,0 +1,11 @@
+{{#extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div class="alert alert-danger">
+        Are you sure you want to delete "{{petRecord.name}}"?
+    </div>
+    <input type="submit" class="btn btn-danger" value="OK">
+    <a href="/pet-record" class="btn btn-success">Cancel</a>
+</form>
+{{/block}}
+{{/extends}}

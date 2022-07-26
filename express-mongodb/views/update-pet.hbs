@@ -1,0 +1,42 @@
+{{#extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name" class="form-control" value="{{petRecord.name}}">
+    </div>
+    <div>
+        <label>Age:</label>
+        <input type="text" name="age" class="form-control" value="{{petRecord.age}}">
+    </div>
+    <div>
+        <label>Breed:</label>
+        <input type="text" name="breed" class="form-control" value="{{petRecord.breed}}">
+    </div>
+    <div>
+        <label>Problems:</label>
+        <input type="text" name="problems" class="form-control" value="{{petRecord.problems}}">
+    </div>
+    <div>
+        <label>Select Tags:</label>
+        <input type="checkbox" name="tags" class="form-check-input" value="vaccinated" {{#inArray petRecord.tags "vaccinated"}}checked{{/inArray}}>
+        <label class="form-check-label">Vaccinated</label>
+        
+        <input type="checkbox" name="tags" class="form-check-input" value="chipped" {{#inArray petRecord.tags "chipped"}}checked{{/inArray}}>
+        <label class="form-check-label">Chipped</label>
+
+        <input type="checkbox" name="tags" class="form-check-input" value="fixed" {{#inArray petRecord.tags "fixed"}}checked{{/inArray}}>
+        <label class="form-check-label">Fixed</label>
+    </div>
+    <div>
+        <label>HDB Approved:</label>
+        <input type="radio" name="hdb" class="form-check-input" value="true" {{#eq petRecord.hdb true}}checked{{/eq}}>
+        <label class="form-check-label">Yes</label>
+
+        <input type="radio" name="hdb" class="form-check-input" value="false" {{#eq petRecord.hdb false}}checked{{/eq}}>
+        <label class="form-check-label">No</label>
+    </div>
+    <input type="submit" value="Add Animal" class="btn btn-primary mt-3">
+</form>
+{{/block}}
+{{/extends}}

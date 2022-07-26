@@ -1,0 +1,42 @@
+{{#extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name" class="form-control">
+    </div>
+    <div>
+        <label>Breed:</label>
+        <input type="text" name="breed" class="form-control">
+    </div>
+    <div>
+        <label>Age:</label>
+        <input type="text" name="age" class="form-control">
+    </div>
+    <div>
+        <label>Problems:</label>
+        <input type="text" name="problems" class="form-control">
+    </div>
+<div>
+        <label>Select Tags:</label>
+        <input type="checkbox" name="tags" class="form-check-input" value="vaccinated">
+        <label class="form-check-label">Vaccinated</label>
+        
+        <input type="checkbox" name="tags" class="form-check-input" value="chipped">
+        <label class="form-check-label">Chipped</label>
+
+        <input type="checkbox" name="tags" class="form-check-input" value="fixed">
+        <label class="form-check-label">Fixed</label>
+    </div>
+    <div>
+        <label>HDB Approved:</label>
+        <input type="radio" name="hdb" class="form-check-input" value="true">
+        <label class="form-check-label">Yes</label>
+
+        <input type="radio" name="hdb" class="form-check-input" value="false">
+        <label class="form-check-label">No</label>
+    </div>
+    <input type="submit" value="Add Animal" class="btn btn-primary mt-3">
+</form>
+{{/block}}
+{{/extends}}

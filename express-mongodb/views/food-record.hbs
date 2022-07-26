@@ -21,8 +21,9 @@
             <td>{{this.meal}}</td>
             <td>{{this.tags}}</td>
             <td>
-                <a href="/sighting/edit/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
-                <a href="/sighting/delete/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="/{{this._id}}/note" class="btn btn-secondary btn-sm">Notes</a>
+                <a href="/update-food/{{this._id}}" class="btn btn-primary btn-sm">Update</a>
+                <a href="/delete-food/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
         {{/each}}

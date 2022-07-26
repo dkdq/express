@@ -1,0 +1,25 @@
+{{#extends "base"}}
+{{#block "content"}}
+<div>
+  <a href="/add-food" class="btn btn-primary mt-3">Add New Pet</a>
+</div><br>
+{{#each petRecord}}
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <ul>
+        <li>Age: {{this.age}}</li>
+        <li>Breed: {{this.breed}}</li>
+        <li>Problems: {{this.problems}}</li>
+        <li>Tags: {{this.tags}}</li>
+        <li>HDB Approved:{{this.hdb}}</li>
+    </ul>
+    <a href="/{{this._id}}/note/add" class="btn btn-secondary btn-sm">Notes</a>
+    <a href="/update-pet/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+    <a href="/delete-pet/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
+  </div>
+</div>
+{{/each}}
+{{/block}}
+{{/extends}}
