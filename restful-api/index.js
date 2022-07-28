@@ -27,7 +27,7 @@ async function main() {
             'food': food,
             'datetime': datetime
         })
-        res.status(200);
+        res.status(201);
         res.send(result);
     })
 

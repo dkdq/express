@@ -206,7 +206,7 @@ async function main(){
             }
         })
         // res.send(foodResponse);
-        let noteDelete = foodResponse.note[0];
+        let noteDelete = foodResponse.note[0].comment;
         res.render('delete-note',{
             'note': noteDelete
         })
