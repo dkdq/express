@@ -172,14 +172,19 @@ async function main() {
 
     // SIGNUP - Q1 Add new student
     app.post('/students',async function(req,res){
-        await db.collection('students').insertOne({
+        let result = await db.collection('students').insertOne({
             'username': req.body.username,
             'age': req.body.age,
             'email': req.body.email,
             'password': req.body.password,
             'classes': req.body.classes
         })
-        res.sendStatus(201);
+        res.sendStatus (201);
+        // res.status(201);
+        // res.json({
+        //     'message': 'New user created successfully!',
+        //     'result': result
+        // })
     })
 
     // LOGIN - Q2 Login
@@ -217,6 +222,7 @@ async function main() {
                 'username': req.body.username ? req.body.username : student.username,
                 'age': req.body.age ? req.body.age : student.age,
                 'email': req.body.email ? req.body.email : student.email,
+                'password': req.body.password? req.body.password : student.passsword,
                 'classes': req.body.classes ? req.body.classes : student.classes
             }
         })
